@@ -1,14 +1,16 @@
-// src/Login.tsx
+
 import { useState } from 'react';
 import { supabase } from './supabaseClient';
 import { Button, Input, Typography, Divider } from 'antd';
 import { GoogleOutlined, GithubOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const { Title } = Typography;
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
   const handleEmailLogin = async () => {
     const { error } = await supabase.auth.signInWithPassword({
@@ -16,13 +18,11 @@ export default function Login() {
       password,
     });
     if (error) alert(error.message);
-    // No need to navigate here as the useEffect will handle redirection when session updates
   };
 
   const handleOAuthLogin = async (provider: "google" | "github") => {
     const { error } = await supabase.auth.signInWithOAuth({ provider });
     if (error) alert(error.message);
-    // Again, redirection handled by useEffect when session updates
   };
 
   return (
@@ -63,7 +63,7 @@ export default function Login() {
           Sign in with GitHub
         </Button>
         <Button type="link" onClick={() => navigate('/signup')}>
-        Don’t have an account?! Sign up brother
+        Don’t have an account? Sign up here!
         </Button>
       </div>
     </div>

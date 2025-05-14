@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 
-import App from './App'; // this should contain your post-login RoleRouter
+import App from './App';
 import Login from './Login';
 import Signup from './Signup';
 
