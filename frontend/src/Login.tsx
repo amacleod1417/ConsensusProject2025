@@ -3,12 +3,16 @@ import { useState } from 'react';
 import { supabase } from './supabaseClient';
 import { Button, Input, Typography, Divider } from 'antd';
 import { GoogleOutlined, GithubOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom'; 
 
 const { Title } = Typography;
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
+
 
   const handleEmailLogin = async () => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -56,6 +60,9 @@ export default function Login() {
           onClick={() => handleOAuthLogin('github')}
         >
           Sign in with GitHub
+        </Button>
+        <Button type="link" onClick={() => navigate('/signup')}>
+        Don’t have an account?! Sign up brother
         </Button>
       </div>
     </div>
