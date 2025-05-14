@@ -1,29 +1,35 @@
-import { useEffect, useState } from 'react';
-import { supabase } from './supabaseClient';
-import Login from './Login';
-import RoleRouter from './RoleRouter';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./auth/AuthProvider";
+import { useAuth } from "./auth/AuthProvider";
+import Dashboard from "./Dashboard";
+import Login from "./Login";
+
+// Protected route component
+function ProtectedRoute({ children }: { children: React.ReactNode }) {
+  const { session, loading } = useAuth();
+
+  if (loading) return null;
+  return session ? children : <Navigate to="/" replace />;
+}
 
 function App() {
-  const [session, setSession] = useState<any>(null);
-
-  useEffect(() => {
-    const getSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setSession(session);
-    };
-
-    getSession();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []);
-
-  return session ? <RoleRouter /> : <Login />;
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
 export default App;
