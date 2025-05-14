@@ -17,6 +17,7 @@ export default function Login() {
   // Redirect if session exists
   useEffect(() => {
     if (session) {
+      // Navigate to dashboard which will route based on role
       navigate("/dashboard");
     }
   }, [session, navigate]);
