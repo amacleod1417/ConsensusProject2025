@@ -1,0 +1,7 @@
+[package]
+name = "consensus2025"
+version = "0.0.1"
+authors = ["Ally MacLeod"]
+
+[addresses]
+consensus2025 = "0x65f7c487e3aac31a39ca9b9f3a328aaaee4551049a3848b346607515dd2d142b"

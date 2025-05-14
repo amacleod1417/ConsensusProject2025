@@ -1,0 +1,48 @@
+---
+compiled_package_info:
+  package_name: consensus2025
+  address_alias_instantiation:
+    consensus2025: 65f7c487e3aac31a39ca9b9f3a328aaaee4551049a3848b346607515dd2d142b
+  source_digest: 7C8163B0A6F31BA93A68C9497706D0D277574957498030E6E6E515960CE43DB1
+  build_flags:
+    dev_mode: false
+    test_mode: false
+    override_std: ~
+    generate_docs: false
+    generate_abis: false
+    generate_move_model: true
+    full_model_generation: true
+    install_dir: ~
+    force_recompilation: false
+    additional_named_addresses: {}
+    fetch_deps_only: false
+    skip_fetch_latest_git_deps: false
+    compiler_config:
+      bytecode_version: 7
+      known_attributes:
+        - bytecode_instruction
+        - deprecated
+        - event
+        - expected_failure
+        - "fmt::skip"
+        - legacy_entry_fun
+        - "lint::allow_unsafe_randomness"
+        - "lint::skip"
+        - module_lock
+        - "mutation::skip"
+        - native_interface
+        - persistent
+        - randomness
+        - resource_group
+        - resource_group_member
+        - test
+        - test_only
+        - verify_only
+        - view
+      skip_attribute_checks: false
+      compiler_version: V2_0
+      language_version: V2_1
+      experiments:
+        - optimize=on
+dependencies: []
+bytecode_deps: []
